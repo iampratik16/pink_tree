@@ -43,23 +43,41 @@ export async function generateMetadata({
   };
 }
 
-/** Editorial width per media aspect ratio. */
+/**
+ * Editorial width per media aspect ratio.
+ *
+ * Four bands rather than three. A square used to share the landscape width and
+ * came out 1024px tall, and a near-square portrait (an Instagram capture at
+ * 0.853) missed the old 0.85 cut-off by three thousandths and rendered
+ * 1024x1200 — taller than the viewport. Height, not width, is what makes a
+ * gallery feel heavy, so the squarer the image the narrower it runs.
+ */
 function layoutFor(media: Media): { wrap: string; fullBleed: boolean; sizes: string } {
   const ratio = media.width / media.height;
-  if (media.type === "video" || ratio >= 1.85) {
+  // Full bleed is reserved for genuinely cinematic media now: video, or 2.2:1
+  // and wider. At 1.85 a 2:1 band ran the full 1440px beside neighbours capped
+  // at 768, and the one loud image made the whole gallery read as oversized.
+  if (media.type === "video" || ratio >= 2.2) {
     return { wrap: "", fullBleed: true, sizes: "100vw" };
   }
-  if (ratio <= 0.85) {
+  if (ratio <= 0.9) {
     return {
-      wrap: "mx-auto w-full max-w-2xl",
+      wrap: "mx-auto w-full max-w-md",
       fullBleed: false,
-      sizes: "(min-width: 768px) 42rem, 100vw",
+      sizes: "(min-width: 768px) 28rem, 100vw",
+    };
+  }
+  if (ratio <= 1.2) {
+    return {
+      wrap: "mx-auto w-full max-w-xl",
+      fullBleed: false,
+      sizes: "(min-width: 768px) 36rem, 100vw",
     };
   }
   return {
-    wrap: "mx-auto w-full max-w-5xl",
+    wrap: "mx-auto w-full max-w-3xl",
     fullBleed: false,
-    sizes: "(min-width: 768px) 64rem, 100vw",
+    sizes: "(min-width: 768px) 48rem, 100vw",
   };
 }
 

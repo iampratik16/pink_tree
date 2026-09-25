@@ -82,11 +82,14 @@ const chigwellMarquees: CaseStudy = {
       1600,
       1600,
     ),
+    // Captured at phone width rather than desktop: the profile is a phone
+    // artefact, and a 430px-wide source sits at its native size in the portrait
+    // column instead of a 1280px desktop capture shrunk until the text goes.
     img(
       "/media/work/chigwell/social.jpg",
       "The Chigwell Marquees Instagram profile, with branded story highlights and a grid of venue content.",
-      1280,
-      1500,
+      430,
+      930,
     ),
   ],
   results: [],
