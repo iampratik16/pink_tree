@@ -1,21 +1,19 @@
 import { caseStudySchema, type CaseStudy } from "@/content/schema";
 import roya from "@/content/case-studies/roya-london";
 import chigwell from "@/content/case-studies/chigwell-marquees";
+import firstImpressions from "@/content/case-studies/first-impressions";
 import swifty from "@/content/case-studies/swifty-beats";
 
 /**
  * The published set, in the order the client asked for: Roya London, The
  * Chigwell Marquees, First Impressions, Swifty Beats.
  *
- * First Impressions has no copy or imagery yet, so it is not here — a case
- * study invented for a real client would be worse than a missing one.
- *
  * Aya Beauty, Central Restaurant & Lounge and North Mymms Park are still in
  * src/content/case-studies/ but are deliberately not registered. They remain
  * clients (all three are in the logo strip); they are simply not part of this
  * selection. Re-adding one is a single import plus an entry below.
  */
-const RAW: unknown[] = [roya, chigwell, swifty];
+const RAW: unknown[] = [roya, chigwell, firstImpressions, swifty];
 
 /**
  * Validate every entry through Zod at module load. A malformed case study

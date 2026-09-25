@@ -26,6 +26,8 @@ export function buildStudy(opts: {
   theChallenge: string;
   /** Overrides the "The Challenge" heading for this study. */
   challengeLabel?: string;
+  /** Linked strip of real posts from the client's Instagram. */
+  instagram?: CaseStudy["instagram"];
   /** "What we delivered" summary, keyed by discipline. */
   delivered: Partial<Record<Discipline, string>>;
 }): CaseStudy {
@@ -44,6 +46,7 @@ export function buildStudy(opts: {
     theClient: opts.theClient,
     theChallenge: opts.theChallenge,
     challengeLabel: opts.challengeLabel,
+    instagram: opts.instagram,
     delivered: disciplines.map((area) => ({
       area,
       summary: opts.delivered[area] ?? "",
