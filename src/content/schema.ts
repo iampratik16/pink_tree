@@ -15,6 +15,12 @@ export const imageMediaSchema = z.object({
   width: z.number().int().positive(),
   height: z.number().int().positive(),
   priority: z.boolean().optional(),
+  /**
+   * A product cutout on transparency rather than a photograph. Renders smaller
+   * and without the plate the gallery puts behind a normal image — a grey card
+   * around a knocked-out object just reinvents the background we removed.
+   */
+  cutout: z.boolean().optional(),
 });
 
 export const videoSourceSchema = z.object({

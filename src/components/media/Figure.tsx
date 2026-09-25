@@ -11,6 +11,8 @@ type Props = {
   /** Show the alt text as a small caption beneath the media. */
   caption?: boolean;
   rounded?: boolean;
+  /** Draw the tinted card behind the media. Off for transparent cutouts. */
+  plate?: boolean;
   /** Subtle vertical parallax within an over-sized frame (no edge gaps). */
   parallax?: boolean;
   /** Mark as the LCP hero — preloads eagerly instead of lazy-loading. */
@@ -28,10 +30,12 @@ export default function Figure({
   className = "",
   caption = false,
   rounded = true,
+  plate = true,
   parallax = false,
   priority = false,
 }: Props) {
-  const radius = rounded ? "rounded-[var(--radius-sm)]" : "";
+  const radius = rounded && plate ? "rounded-[var(--radius-sm)]" : "";
+  const bg = plate ? "bg-(--color-hairline)" : "";
 
   const inner =
     media.type === "video" ? (
@@ -42,7 +46,7 @@ export default function Figure({
 
   return (
     <figure className={className}>
-      <Reveal media className={`relative overflow-hidden bg-(--color-hairline) ${radius}`}>
+      <Reveal media className={`relative overflow-hidden ${bg} ${radius}`}>
         <div className="relative" style={{ aspectRatio: `${media.width} / ${media.height}` }}>
           {parallax ? (
             // Over-size by 16% so the parallax travel never reveals an edge.

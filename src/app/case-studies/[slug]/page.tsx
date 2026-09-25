@@ -55,6 +55,15 @@ export async function generateMetadata({
  */
 function layoutFor(media: Media): { wrap: string; fullBleed: boolean; sizes: string } {
   const ratio = media.width / media.height;
+  // A cutout is an object, not a scene: it reads at product scale and gets no
+  // plate, so it needs no width to hold detail.
+  if (media.type === "image" && media.cutout) {
+    return {
+      wrap: "mx-auto w-full max-w-sm",
+      fullBleed: false,
+      sizes: "(min-width: 768px) 24rem, 70vw",
+    };
+  }
   // Full bleed is reserved for genuinely cinematic media now: video, or 2.2:1
   // and wider. At 1.85 a 2:1 band ran the full 1440px beside neighbours capped
   // at 768, and the one loud image made the whole gallery read as oversized.
@@ -233,6 +242,7 @@ export default async function CaseStudyPage({
                   media={media}
                   sizes={sizes}
                   rounded={!fullBleed}
+                  plate={!(media.type === "image" && media.cutout)}
                   parallax={fullBleed}
                   className={fullBleed ? "w-full" : wrap}
                 />

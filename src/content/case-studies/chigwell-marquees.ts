@@ -76,18 +76,15 @@ const chigwellMarquees: CaseStudy = {
       2304,
       1536,
     ),
-    img(
-      "/media/work/chigwell/umbrella.jpg",
-      "A branded Chigwell Marquees golf umbrella in navy, the crown wordmark printed in white.",
-      1600,
-      1600,
-    ),
-    img(
-      "/media/work/chigwell/signage.jpg",
-      "Large-format branded backdrops in Chigwell Marquees navy and gold, staged inside the marquee.",
-      1800,
-      1350,
-    ),
+    {
+      ...img(
+        "/media/work/chigwell/umbrella.png",
+        "A branded Chigwell Marquees golf umbrella in navy, the crown wordmark printed in white.",
+        1000,
+        987,
+      ),
+      cutout: true,
+    },
   ],
   // Real posts from the venue's own account, each linking out to the post.
   // Thumbnails are self-hosted: Instagram signs its CDN URLs with a short
