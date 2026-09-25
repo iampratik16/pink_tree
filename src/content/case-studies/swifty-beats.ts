@@ -1,30 +1,79 @@
 import { buildStudy } from "@/content/case-studies/_placeholder";
 import { img } from "@/lib/media";
 
+/**
+ * Swifty Beats. Client-supplied copy, used close to verbatim, replacing the
+ * draft written for layout.
+ *
+ * Two things went with that draft. "Social Media Marketing" is no longer
+ * claimed: the services listed here are website, digital, branding,
+ * merchandise and creative, and social is not among them. And the hero is now
+ * a real merch shot rather than a generated ambient stage loop — every other
+ * study in the set leads on the client's own work.
+ *
+ * `theClient` is the artist's own positioning, from the About page of the site.
+ */
 export default buildStudy({
   slug: "swifty-beats",
   client: "Swifty Beats",
   sector: "Music & Entertainment",
   order: 4,
-  disciplines: ["Branding & Design", "Social Media Marketing"],
+  disciplines: ["Branding & Design", "Websites & Digital Marketing", "Print & Merchandise"],
   heroSrc: "/media/work/swifty/hero.jpg",
-  heroAlt: "Swifty Beats, warm light beams sweeping through haze across a darkened stage.",
-  heroVideo: true,
-  liveUrl: "https://swiftybeats.vercel.app",
-  oneLineOutcome: "A bold identity and social rhythm for a rising music brand.",
+  heroAlt:
+    "Swifty Beats merchandise laid out on concrete: a black bomber jacket, folded tees and a turntable.",
+  liveUrl: "https://swiftybeatsv3.vercel.app/",
+  oneLineOutcome:
+    "A digital home for the music, and a merch line carrying the same identity.",
   theClient:
-    "Swifty Beats is a music and entertainment brand built around live events, studio sessions and a fast-growing online audience, a name that trades on energy, momentum and a distinct sound.",
+    "Swifty Beats is an Asian House producer and DJ, working the rare space where South Asian percussion and dhol heritage meet house and electronic production, with releases, remixes and UK tour dates behind him.",
+  challengeLabel: "The Project",
   theChallenge:
-    "The music spoke for itself, but the brand around it did not yet match its ambition. Swifty Beats needed a bold, unmistakable identity and a social presence with the same rhythm as the sets, one that carries across stages, screens and streaming platforms.",
+    "Pink Tree Media worked with Swifty Beats to develop a distinctive digital presence that reflects his identity as an artist, bringing together his music, visual style and merchandise under one cohesive brand.",
   delivered: {
     "Branding & Design":
-      "A high-energy identity built for motion: a flexible logo, a charged colour palette and a typographic system designed to hold its own against neon, stage light and a small phone screen alike.",
-    "Social Media Marketing":
-      "A content system with a consistent visual beat, turning clips, releases and live moments into a recognisable feed that keeps the audience warm between events.",
+      "A visual direction consistent across the artist’s wider brand, holding from the site through to the product, so the music, the imagery and the merchandise all read as one thing.",
+    "Websites & Digital Marketing":
+      "Design and development of the Swifty Beats website, creating a central digital platform for his music, releases and artist profile.",
+    "Print & Merchandise":
+      "Branded merchandise and supporting creative assets, carrying the Swifty Beats identity beyond digital and into something people wear.",
   },
   work: [
-    img("/media/work/swifty/site-01.jpg", "Swifty Beats, a warm-lit recording studio.", 2400, 1680),
-    img("/media/work/swifty/site-02.jpg", "Swifty Beats, a live broadcast set.", 2400, 1680),
-    img("/media/work/swifty/site-03.jpg", "Swifty Beats, hands mixing on a DJ deck.", 2560, 1280),
+    img(
+      "/media/work/swifty/site-01.jpg",
+      "The Swifty Beats website shown on desktop and mobile, with the latest release.",
+      2000,
+      1500,
+    ),
+    img(
+      "/media/work/swifty/site-02.jpg",
+      "The Swifty Beats shop, the merchandise range laid out across the site.",
+      1440,
+      1000,
+    ),
+    img(
+      "/media/work/swifty/merch-01.jpg",
+      "Swifty Beats merchandise: a navy hoodie and an olive tee, both carrying the wordmark.",
+      2172,
+      1086,
+    ),
+    img(
+      "/media/work/swifty/merch-02.jpg",
+      "Swifty Beats merchandise: a black tonal tee and a white tee for The Sessions.",
+      2172,
+      1086,
+    ),
+    img(
+      "/media/work/swifty/merch-03.jpg",
+      "The Sessions beanies in black, navy, grey, olive and white, each with a woven label.",
+      1448,
+      1086,
+    ),
+    img(
+      "/media/work/swifty/portrait.jpg",
+      "Swifty Beats in the studio, a session open on the screens behind him.",
+      1100,
+      1375,
+    ),
   ],
 });
