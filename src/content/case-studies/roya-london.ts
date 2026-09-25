@@ -43,7 +43,7 @@ export default buildStudy({
     img(
       "/media/work/roya/site-01.jpg",
       "The Roya London Shopify storefront shown on desktop and mobile.",
-      2400,
+      2000,
       1500,
     ),
     img(
@@ -54,9 +54,15 @@ export default buildStudy({
     ),
     img(
       "/media/work/roya/product-01.jpg",
-      "Roya London products: a shell-print wash bag set and a block-printed safari tote.",
-      2400,
-      1200,
+      "A Roya London shell-print quilted wash bag set in coral and cream.",
+      1400,
+      1400,
+    ),
+    img(
+      "/media/work/roya/product-02.jpg",
+      "A Roya London block-printed safari tote bag in navy.",
+      1400,
+      1400,
     ),
     img(
       "/media/work/roya/tag.jpg",

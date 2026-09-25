@@ -82,16 +82,52 @@ const chigwellMarquees: CaseStudy = {
       1600,
       1600,
     ),
-    // Captured at phone width rather than desktop: the profile is a phone
-    // artefact, and a 430px-wide source sits at its native size in the portrait
-    // column instead of a 1280px desktop capture shrunk until the text goes.
     img(
-      "/media/work/chigwell/social.jpg",
-      "The Chigwell Marquees Instagram profile, with branded story highlights and a grid of venue content.",
-      430,
-      930,
+      "/media/work/chigwell/signage.jpg",
+      "Large-format branded backdrops in Chigwell Marquees navy and gold, staged inside the marquee.",
+      1800,
+      1350,
     ),
   ],
+  // Real posts from the venue's own account, each linking out to the post.
+  // Thumbnails are self-hosted: Instagram signs its CDN URLs with a short
+  // expiry, so hotlinking them would break the strip within days.
+  instagram: {
+    handle: "thechigwellmarquees",
+    profileUrl: "https://www.instagram.com/thechigwellmarquees/",
+    posts: [
+      {
+        url: "https://www.instagram.com/reel/DdNOP4vM5Yh/",
+        src: "/media/work/chigwell/instagram/DdNOP4vM5Yh.jpg",
+        alt: "An aerial of the marquee and grounds, captioned with the Chigwell Marquees wordmark.",
+      },
+      {
+        url: "https://www.instagram.com/reel/DaVLlUmsoZX/",
+        src: "/media/work/chigwell/instagram/DaVLlUmsoZX.jpg",
+        alt: "A chandelier and tall floral arrangements above a dressed table in the marquee.",
+      },
+      {
+        url: "https://www.instagram.com/p/DbiJljqGi49/",
+        src: "/media/work/chigwell/instagram/DbiJljqGi49.jpg",
+        alt: "A branded welcome sign beside a floral gazebo set for an outdoor ceremony.",
+      },
+      {
+        url: "https://www.instagram.com/p/Dc_-urvM1it/",
+        src: "/media/work/chigwell/instagram/Dc_-urvM1it.jpg",
+        alt: "A branded availability graphic for a date in the Mega Marquee.",
+      },
+      {
+        url: "https://www.instagram.com/reel/DbaUU79EWTH/",
+        src: "/media/work/chigwell/instagram/DbaUU79EWTH.jpg",
+        alt: "A patterned aisle runner and red and gold florals through the dressed marquee.",
+      },
+      {
+        url: "https://www.instagram.com/reel/DbpvXdRkUEm/",
+        src: "/media/work/chigwell/instagram/DbpvXdRkUEm.jpg",
+        alt: "A couple photographed in the grounds at The Chigwell Marquees.",
+      },
+    ],
+  },
   results: [],
   seo: {
     title: "The Chigwell Marquees, Brand, print and social",

@@ -64,6 +64,26 @@ export const caseStudySchema = z.object({
     .array(z.object({ area: z.enum(DISCIPLINES), summary: z.string().min(1) }))
     .min(1),
   work: z.array(mediaSchema).default([]),
+  /**
+   * Real posts from the client's Instagram, shown as a linked strip. Thumbnails
+   * are self-hosted: the CDN URLs Instagram serves are signed and expire within
+   * days, so hotlinking them would leave a wall of broken images.
+   */
+  instagram: z
+    .object({
+      handle: z.string().min(1),
+      profileUrl: z.string().min(1),
+      posts: z
+        .array(
+          z.object({
+            url: z.string().min(1),
+            src: z.string().min(1),
+            alt: z.string().min(1),
+          }),
+        )
+        .min(1),
+    })
+    .optional(),
   results: z
     .array(z.object({ value: z.string().optional(), label: z.string().min(1) }))
     .default([]),
