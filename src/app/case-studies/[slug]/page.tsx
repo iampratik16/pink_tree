@@ -3,7 +3,6 @@ import { notFound } from "next/navigation";
 import Reveal from "@/components/motion/Reveal";
 import MaskHeading from "@/components/motion/MaskHeading";
 import Figure from "@/components/media/Figure";
-import WorkMosaic from "@/components/work/WorkMosaic";
 import InstagramStrip from "@/components/work/InstagramStrip";
 import Img from "@/components/media/Img";
 import Video from "@/components/media/Video";
@@ -93,12 +92,6 @@ export default async function CaseStudyPage({
   if (!study) notFound();
 
   const next = getNextCaseStudy(slug);
-
-  // Five or more stills render as a mosaic. Anything with a video in it stays
-  // stacked: the mosaic tiles are <Img>, and a 2x2 grid short of a tile reads
-  // as a bug rather than a composition.
-  const stills = study.work.filter((m) => m.type === "image");
-  const mosaic = stills.length >= 5 && stills.length === study.work.length ? stills : null;
 
   return (
     <article>
@@ -221,20 +214,17 @@ export default async function CaseStudyPage({
         </div>
       </section>
 
-      {/* The Work — the visual heart */}
+      {/* The Work — the visual heart. One image per row, centred, width set by
+          aspect ratio (see layoutFor). Tried as a mosaic: side by side the
+          images fought each other, and the brochure and the signage backdrop
+          were too detailed to read at quarter width. */}
       {study.work.length > 0 && (
         <section className="section">
           <div className="container-page">
             <Reveal as="p" className="eyebrow">
               The Work
             </Reveal>
-            {mosaic && (
-              <div className="mt-14">
-                <WorkMosaic items={mosaic} />
-              </div>
-            )}
           </div>
-          {!mosaic && (
           <div className="mt-14 flex flex-col gap-[clamp(2rem,6vh,6rem)]">
             {study.work.map((media, i) => {
               const { wrap, fullBleed, sizes } = layoutFor(media);
@@ -256,7 +246,6 @@ export default async function CaseStudyPage({
               );
             })}
           </div>
-          )}
         </section>
       )}
 
