@@ -21,7 +21,7 @@ export default buildStudy({
   disciplines: ["Branding & Design", "Websites & Digital Marketing", "Print & Merchandise"],
   heroSrc: "/media/work/swifty/hero.jpg",
   heroAlt:
-    "Swifty Beats merchandise laid out on concrete: a black bomber jacket, folded tees and a turntable.",
+    "Twin turntables and a mixer lit from the side in a darkened studio, a dhol drum behind them.",
   liveUrl: "https://swiftybeatsv3.vercel.app/",
   oneLineOutcome:
     "A digital home for the music, and a merch line carrying the same identity.",
@@ -41,13 +41,13 @@ export default buildStudy({
   work: [
     img(
       "/media/work/swifty/site-01.jpg",
-      "The Swifty Beats website shown on desktop and mobile, with the latest release.",
+      "The Swifty Beats shop shown on desktop and mobile, the merchandise range laid out across it.",
       2000,
       1500,
     ),
     img(
       "/media/work/swifty/site-02.jpg",
-      "The Swifty Beats shop, the merchandise range laid out across the site.",
+      "The Swifty Beats site, the latest release with its artwork and streaming links.",
       1440,
       1000,
     ),
@@ -68,12 +68,6 @@ export default buildStudy({
       "The Sessions beanies in black, navy, grey, olive and white, each with a woven label.",
       1448,
       1086,
-    ),
-    img(
-      "/media/work/swifty/portrait.jpg",
-      "Swifty Beats in the studio, a session open on the screens behind him.",
-      1100,
-      1375,
     ),
   ],
 });
