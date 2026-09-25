@@ -43,7 +43,7 @@ export default function Header() {
 
   // Routes that open with a dark, full-bleed hero need light header text
   // until the user scrolls into the solid paper header.
-  const darkHero = pathname === "/" || /^\/work\/[^/]+$/.test(pathname);
+  const darkHero = pathname === "/" || /^\/case-studies\/[^/]+$/.test(pathname);
   const overHero = darkHero && !scrolled;
 
   return (

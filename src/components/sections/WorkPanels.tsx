@@ -39,7 +39,7 @@ export default function WorkPanels() {
           as="h2"
           className="font-(family-name:--font-label) text-[clamp(1.4rem,2.4vw,2.2rem)] font-light uppercase tracking-[0.08em] text-(--color-paper-on-dark)"
         >
-          Selected work
+          Case Studies
         </Reveal>
         <Reveal as="p" delay={90} className="mx-auto mt-4 max-w-[52ch] text-(--color-paper-on-dark)/70">
           Different businesses need different things. We take the time to
@@ -48,10 +48,10 @@ export default function WorkPanels() {
         </Reveal>
       </div>
 
-      <ul className="rail rail--flush pb-[var(--section-y)]" aria-label="Selected work">
+      <ul className="rail rail--flush pb-[var(--section-y)]" aria-label="Case studies">
         {studies.map((study, i) => (
           <Reveal media key={study.slug} as="li" delay={i * 80} className="rail-item">
-            <TransitionLink href={`/work/${study.slug}`} className="work-panel group">
+            <TransitionLink href={`/case-studies/${study.slug}`} className="work-panel group">
               {/* alt is empty on purpose: the image is inside the link, so its
                   alt folds into the link's accessible name, and the link already
                   renders client / "View" / sector as real text.

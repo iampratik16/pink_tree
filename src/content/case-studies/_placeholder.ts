@@ -24,6 +24,8 @@ export function buildStudy(opts: {
   oneLineOutcome: string;
   theClient: string;
   theChallenge: string;
+  /** Overrides the "The Challenge" heading for this study. */
+  challengeLabel?: string;
   /** "What we delivered" summary, keyed by discipline. */
   delivered: Partial<Record<Discipline, string>>;
 }): CaseStudy {
@@ -41,6 +43,7 @@ export function buildStudy(opts: {
     oneLineOutcome: opts.oneLineOutcome,
     theClient: opts.theClient,
     theChallenge: opts.theChallenge,
+    challengeLabel: opts.challengeLabel,
     delivered: disciplines.map((area) => ({
       area,
       summary: opts.delivered[area] ?? "",

@@ -56,6 +56,10 @@ export const caseStudySchema = z.object({
   oneLineOutcome: z.string().min(1),
   theClient: z.string().min(1),
   theChallenge: z.string().min(1),
+  /** Heading for the second narrative column. Some engagements are framed as a
+   *  brief rather than a problem ("The Project"), and forcing that copy under
+   *  "The Challenge" reads wrong. Defaults to "The Challenge". */
+  challengeLabel: z.string().optional(),
   delivered: z
     .array(z.object({ area: z.enum(DISCIPLINES), summary: z.string().min(1) }))
     .min(1),

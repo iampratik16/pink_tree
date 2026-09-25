@@ -32,12 +32,12 @@ export async function generateMetadata({
   return {
     title: study.seo.title,
     description: study.seo.description,
-    alternates: { canonical: `/work/${slug}` },
+    alternates: { canonical: `/case-studies/${slug}` },
     openGraph: {
       type: "article",
       title: study.seo.title,
       description: study.seo.description,
-      url: `${SITE.url}/work/${slug}`,
+      url: `${SITE.url}/case-studies/${slug}`,
       // og:image is provided automatically by ./opengraph-image.tsx
     },
   };
@@ -81,8 +81,8 @@ export default async function CaseStudyPage({
           caseStudyLd(study),
           breadcrumbLd([
             { name: "Home", path: "/" },
-            { name: "Work", path: "/work" },
-            { name: study.client, path: `/work/${study.slug}` },
+            { name: "Case Studies", path: "/case-studies" },
+            { name: study.client, path: `/case-studies/${study.slug}` },
           ]),
         ]}
       />
@@ -161,7 +161,7 @@ export default async function CaseStudyPage({
           </div>
           <div>
             <Reveal as="p" className="eyebrow">
-              The Challenge
+              {study.challengeLabel ?? "The Challenge"}
             </Reveal>
             <Reveal>
               <p className="mt-6 text-h3 font-light leading-relaxed">{study.theChallenge}</p>
@@ -259,7 +259,7 @@ export default async function CaseStudyPage({
       {/* Next case study */}
       <section className="border-t border-(--color-hairline)">
         <TransitionLink
-          href={`/work/${next.slug}`}
+          href={`/case-studies/${next.slug}`}
           className="group container-page flex flex-col items-center py-(--section-y) text-center"
         >
           <span className="eyebrow">Next case study</span>

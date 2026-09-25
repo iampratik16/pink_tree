@@ -13,7 +13,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }));
 
   const caseRoutes = getAllSlugs().map((slug) => ({
-    url: `${base}/work/${slug}`,
+    url: `${base}/case-studies/${slug}`,
     changeFrequency: "monthly" as const,
     priority: 0.7,
   }));

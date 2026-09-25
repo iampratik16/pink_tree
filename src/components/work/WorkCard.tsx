@@ -81,7 +81,7 @@ export default function WorkCard({
   );
 
   return (
-    <TransitionLink href={`/work/${study.slug}`} className="work-card group block">
+    <TransitionLink href={`/case-studies/${study.slug}`} className="work-card group block">
       {bare ? (
         <div className="relative">{mediaBox}</div>
       ) : (

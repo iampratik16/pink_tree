@@ -25,11 +25,17 @@ const nextConfig: NextConfig = {
   // 301 redirect map: old WordPress URLs → new IA (planning §10).
   async redirects() {
     return [
-      { source: "/portfolio-item", destination: "/work", permanent: true },
-      { source: "/portfolio-item/:slug", destination: "/work/:slug", permanent: true },
-      { source: "/portfolio-category/:slug*", destination: "/work", permanent: true },
-      { source: "/portfolio", destination: "/work", permanent: true },
-      { source: "/portfolio/:slug*", destination: "/work", permanent: true },
+      // /work was the section's own URL until it became Case Studies. Both it
+      // and every deep link are live in the wild, so they redirect rather than
+      // 404 — and the older WordPress paths now point at the new home directly
+      // instead of chaining through a second hop.
+      { source: "/work", destination: "/case-studies", permanent: true },
+      { source: "/work/:slug", destination: "/case-studies/:slug", permanent: true },
+      { source: "/portfolio-item", destination: "/case-studies", permanent: true },
+      { source: "/portfolio-item/:slug", destination: "/case-studies/:slug", permanent: true },
+      { source: "/portfolio-category/:slug*", destination: "/case-studies", permanent: true },
+      { source: "/portfolio", destination: "/case-studies", permanent: true },
+      { source: "/portfolio/:slug*", destination: "/case-studies", permanent: true },
       { source: "/about-us", destination: "/about", permanent: true },
       { source: "/contact-us", destination: "/contact", permanent: true },
     ];

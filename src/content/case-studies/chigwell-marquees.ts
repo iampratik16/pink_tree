@@ -11,7 +11,7 @@ const chigwellMarquees: CaseStudy = {
   slug: "the-chigwell-marquees",
   client: "The Chigwell Marquees",
   sector: "Luxury Events & Hospitality",
-  order: 1,
+  order: 2,
   placeholder: false,
   disciplines: [
     "Branding & Design",

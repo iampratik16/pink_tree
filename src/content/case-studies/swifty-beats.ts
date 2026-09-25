@@ -5,7 +5,7 @@ export default buildStudy({
   slug: "swifty-beats",
   client: "Swifty Beats",
   sector: "Music & Entertainment",
-  order: 3,
+  order: 4,
   disciplines: ["Branding & Design", "Social Media Marketing"],
   heroSrc: "/media/work/swifty/hero.jpg",
   heroAlt: "Swifty Beats, warm light beams sweeping through haze across a darkened stage.",

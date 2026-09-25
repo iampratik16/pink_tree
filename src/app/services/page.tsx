@@ -182,7 +182,7 @@ export default function ServicesPage() {
           </Reveal>
           <Reveal delay={200}>
             <TransitionLink
-              href="/work"
+              href="/case-studies"
               className="group mt-6 inline-flex items-center gap-2 text-sm uppercase tracking-[0.12em] text-(--color-ink) transition-colors duration-500 hover:text-(--color-accent-ink)"
             >
               See selected work

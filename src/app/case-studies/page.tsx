@@ -8,10 +8,10 @@ import Particles from "@/components/work/Particles";
 import { getAllCaseStudies } from "@/content";
 
 export const metadata: Metadata = {
-  title: "Selected Work",
+  title: "Case Studies",
   description:
     "Selected Pink Tree Media case studies. From individual projects to complete marketing partnerships, covering brand, digital, social, web and print.",
-  alternates: { canonical: "/work" },
+  alternates: { canonical: "/case-studies" },
 };
 
 export default function WorkIndex() {
@@ -25,13 +25,13 @@ export default function WorkIndex() {
         {/* Page header */}
         <header className="pb-[clamp(2rem,5vh,4rem)] pt-[calc(var(--header-h)+clamp(3rem,10vh,8rem))]">
           <Reveal as="p" className="eyebrow">
-            Selected work
+            Case Studies
           </Reveal>
           <MaskHeading
             as="h1"
             className="mt-6 max-w-[16ch] text-display font-light leading-[1.0] tracking-tight"
           >
-            Depth over breadth.
+            Work we have delivered.
           </MaskHeading>
           <Reveal delay={120}>
             <p className="mt-8 max-w-[52ch] text-h3 font-light leading-relaxed text-(--color-ink-soft)">

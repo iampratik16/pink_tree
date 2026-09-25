@@ -68,7 +68,7 @@ export function caseStudyLd(study: CaseStudy) {
     name: `${study.client}: ${study.oneLineOutcome}`,
     headline: study.seo.title,
     description: study.seo.description,
-    url: `${SITE.url}/work/${study.slug}`,
+    url: `${SITE.url}/case-studies/${study.slug}`,
     image: abs(study.seo.ogImage),
     about: study.sector,
     keywords: study.disciplines.join(", "),
