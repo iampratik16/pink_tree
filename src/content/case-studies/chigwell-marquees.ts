@@ -2,10 +2,22 @@ import type { CaseStudy } from "@/content/schema";
 import { img, loop } from "@/lib/media";
 
 /**
- * LEAD CASE STUDY, The Chigwell Marquees (luxury Essex venue).
- * Copy below is a considered DRAFT for layout/tone and is pending client
- * sign-off (see CONTENT-TODO.md). Outcomes are qualitative statements, not
- * fabricated metrics, replace with real figures once supplied.
+ * The Chigwell Marquees. Client-supplied copy, used close to verbatim,
+ * replacing the draft that stood here for layout purposes.
+ *
+ * Three things went with that draft:
+ *
+ *  - "Websites & Digital Marketing" is no longer claimed. The services the
+ *    client listed for this study are social media, branding, print, signage
+ *    and large format; web is not among them.
+ *  - `results` is empty. The draft carried "< 1.5s mobile load" and two
+ *    qualitative claims that nobody supplied.
+ *  - `liveUrl` is gone, for the same reason as the first point: a "Visit the
+ *    live site" button on a study that does not claim web work implies we
+ *    built it.
+ *
+ * Like Roya London, the brief is framed as a project rather than a problem, so
+ * the second column is relabelled instead of inventing a challenge.
  */
 const chigwellMarquees: CaseStudy = {
   slug: "the-chigwell-marquees",
@@ -13,12 +25,7 @@ const chigwellMarquees: CaseStudy = {
   sector: "Luxury Events & Hospitality",
   order: 2,
   placeholder: false,
-  disciplines: [
-    "Branding & Design",
-    "Print & Merchandise",
-    "Websites & Digital Marketing",
-    "Social Media Marketing",
-  ],
+  disciplines: ["Branding & Design", "Print & Merchandise", "Social Media Marketing"],
   heroMedia: loop(
     "/media/work/chigwell/hero",
     "/media/work/chigwell/hero.jpg",
@@ -26,77 +33,69 @@ const chigwellMarquees: CaseStudy = {
     2560,
     1600,
   ),
-  oneLineOutcome: "A complete brand world for an exceptional private venue.",
+  oneLineOutcome:
+    "One identity, consistent from the brochure and the signage through to the feed.",
   theClient:
-    "The Chigwell Marquees creates extraordinary settings for weddings and private celebrations across Essex, clear-span structures dressed with the precision of an interior, set within mature private grounds.",
+    "The Chigwell Marquees is a luxury events venue set in the grounds of Chigwell Hall in Essex, where two marquees host weddings, receptions and private celebrations for anywhere from 30 to 1,000 guests.",
+  challengeLabel: "The Project",
   theChallenge:
-    "The venue’s reputation travelled by word of mouth, but its presence online did not match the experience in person. They needed a brand and digital presence as considered as the events they stage, one that reassures discerning couples before a single conversation.",
+    "Pink Tree Media has worked with The Chigwell Marquees across its wider brand and marketing presence, helping create a consistent, premium identity across digital and physical touchpoints.",
   delivered: [
     {
       area: "Branding & Design",
       summary:
-        "A refined identity system: wordmark, monogram and a warm, tactile palette, built to feel timeless rather than seasonal, and to sit as comfortably on a place setting as on a screen.",
+        "A consistent, premium identity applied across digital and physical touchpoints, so the venue looks the same in a brochure, on a sign and on a screen.",
     },
     {
       area: "Print & Merchandise",
       summary:
-        "Brochures, enquiry packs and on-the-day collateral on weighted, uncoated stock, so the first physical touchpoint carries the same quiet luxury as the venue itself.",
-    },
-    {
-      area: "Websites & Digital Marketing",
-      summary:
-        "A fast, image-led website that lets the spaces speak, generous photography, an effortless enquiry flow and performance tuned for instant loading on mobile.",
+        "Branded print, brochures, signage, large-format print and branded promotional materials, carrying the Chigwell Marquees identity through the venue itself as well as its marketing.",
     },
     {
       area: "Social Media Marketing",
       summary:
-        "An art-directed social presence with a consistent editorial rhythm, turning real events into a considered, ongoing portfolio.",
+        "Ongoing social media, keeping the venue visible between events and holding the same identity that runs through everything else it puts out.",
     },
   ],
   work: [
     img(
-      "/media/work/chigwell/site-01.jpg",
-      "A large clear-span luxury marquee dressed for a celebration.",
-      2560,
-      1440,
-    ),
-    img(
-      "/media/work/chigwell/site-02.jpg",
-      "An elegant event interior at The Chigwell Marquees.",
-      1600,
-      2000,
-    ),
-    img(
-      "/media/work/chigwell/site-03.jpg",
-      "The venue's period hall interior.",
+      "/media/work/chigwell/aerial.jpg",
+      "The Chigwell Marquees from the air: Chigwell Hall, the marquee and the grounds in evening light.",
       2400,
       1500,
     ),
     img(
-      "/media/work/chigwell/site-04.jpg",
-      "An Asian wedding mandap staged within the marquee.",
+      "/media/work/chigwell/marquee.jpg",
+      "A marquee at The Chigwell Marquees dressed for a wedding, with a floral stage and candlelit aisle.",
+      2400,
       1600,
-      2000,
     ),
     img(
-      "/media/work/chigwell/site-05.jpg",
-      "A full-bleed marquee interior dressed for a private event.",
-      2560,
+      "/media/work/chigwell/brochure.jpg",
+      "The Chigwell Marquees brochure, open on a spread and shown with its aerial cover.",
+      2304,
+      1536,
+    ),
+    img(
+      "/media/work/chigwell/umbrella.jpg",
+      "A branded Chigwell Marquees golf umbrella in navy, the crown wordmark printed in white.",
+      1600,
+      1600,
+    ),
+    img(
+      "/media/work/chigwell/social.jpg",
+      "The Chigwell Marquees Instagram profile, with branded story highlights and a grid of venue content.",
       1280,
+      1500,
     ),
   ],
-  results: [
-    { label: "A brand the venue can finally stand behind" },
-    { label: "Enquiry journey reduced to a single, effortless step" },
-    { value: "< 1.5s", label: "Mobile load on the new site" },
-  ],
+  results: [],
   seo: {
-    title: "The Chigwell Marquees, Luxury venue brand & website",
+    title: "The Chigwell Marquees, Brand, print and social",
     description:
-      "A complete brand world and fast, image-led website for The Chigwell Marquees, a luxury private events venue in Essex.",
+      "A Pink Tree Media case study for The Chigwell Marquees. Branding, print, signage, large format and social media for a luxury events venue in Essex.",
     ogImage: "/media/work/chigwell/hero.jpg",
   },
-  liveUrl: "https://chigwell-marquees-v2.vercel.app",
 };
 
 export default chigwellMarquees;
