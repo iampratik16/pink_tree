@@ -42,17 +42,20 @@ export const fraunces = Fraunces({
 
 /** Hero display — Boska (Fontshare, ITF Free Font License, self-hosted).
  *  Not on Google Fonts, so this is the next/font/local path the note at the top
- *  of this file describes. Static Bold and Black, NOT the file Fontshare serves
+ *  of this file describes. The static Bold cut, NOT the file Fontshare serves
  *  from its `@variable` URL: that one carries no wght axis. Rendered through a
  *  canvas it produced byte-identical ink at 200, 400, 700 and 900, so a
- *  font-weight declaration against it silently did nothing. Two static cuts cost
- *  ~60KB and actually differ. Served from src/fonts, not /public, so the build
- *  fingerprints them rather than also exposing raw static URLs. */
+ *  font-weight declaration against it silently did nothing. Served from
+ *  src/fonts, not /public, so the build fingerprints it rather than also
+ *  exposing raw static URLs.
+ *
+ *  Bold only. The Black (900) cut shipped alongside it but nothing ever asked
+ *  for weight 900 — the one thing using this face is the homepage H1, at
+ *  `font-bold`. next/font preloads every cut on every page, so that unused
+ *  27KB sat at HIGH priority in front of the LCP image site-wide. */
 export const boska = localFont({
-  src: [
-    { path: "../fonts/Boska-Bold.woff2", weight: "700", style: "normal" },
-    { path: "../fonts/Boska-Black.woff2", weight: "900", style: "normal" },
-  ],
+  src: "../fonts/Boska-Bold.woff2",
+  weight: "700",
   display: "swap",
   variable: "--font-boska",
 });

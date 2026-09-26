@@ -82,6 +82,31 @@ export default function RootLayout({
           <FloatingActions />
         </PageTransition>
         <JsonLd data={[organizationLd(), localBusinessLd()]} />
+        {/* Above-the-fold reveals must not wait for hydration.
+            `html.js` (set in <head>) hides every [data-reveal] at the FIRST
+            paint, but `.is-in` used to arrive only once React had downloaded,
+            hydrated and run RevealObserver. On a throttled connection that held
+            the first screenful invisible for ~3.5s: the homepage's LCP element
+            is a <p> inside a Reveal and measured Load Time 0ms / Render Delay
+            4484ms of a 4.9s LCP, and on /case-studies the card images are
+            clip-path'd to zero height by [data-reveal-media], so their pixels
+            landed 3.7s after their bytes did.
+            This runs at parse time and starts the SAME transition (and the same
+            data-reveal-delay stagger) for whatever is already on screen, so the
+            animation is unchanged — only its start moves earlier. Below the fold
+            is untouched. RevealObserver already filters out `.is-in` elements,
+            so it never fights this. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "requestAnimationFrame(function(){var h=innerHeight;" +
+              "document.querySelectorAll('[data-reveal],[data-reveal-media]').forEach(function(e){" +
+              "if(e.getBoundingClientRect().top>=h)return;" +
+              "var d=+e.getAttribute('data-reveal-delay')||0;" +
+              "d?setTimeout(function(){e.classList.add('is-in')},d):e.classList.add('is-in');" +
+              "})})",
+          }}
+        />
       </body>
     </html>
   );
