@@ -130,7 +130,7 @@ const SERVICES = [
         ],
       },
     ],
-    alt: "A slab of clear glass on a marble base refracting a prism caustic across a plaster wall.",
+    alt: "A laptop and a phone on a marble ledge, both showing the same editorial website layout, a hard diagonal shadow on the plaster behind.",
   },
 ] as const;
 

@@ -41,11 +41,15 @@ const BLOCKS = [
   },
 ];
 
-const about01 = img("/media/about/01.jpg", "A calm executive office with warm walnut interiors and a city view.", 1600, 2000);
-const about02 = img("/media/about/02.jpg", "A boardroom overlooking the London skyline at golden hour.", 2560, 1600);
-const about03 = img("/media/about/03.jpg", "The City of London skyline at golden hour.", 2400, 1600);
-const about04 = img("/media/about/04.jpg", "A warm, plant-filled creative office with skyline views.", 2400, 1600);
-const about05 = img("/media/about/05.jpg", "A boardroom set for a business meeting, the city beyond.", 2400, 1600);
+// The imagery is the work, not the office. These five used to be boardrooms,
+// executive desks and the City skyline — none of which show anything Pink Tree
+// Media makes. They now run the disciplines the copy above them promises:
+// stationery, print finishes, packaging and large-format.
+const about01 = img("/media/about/01.jpg", "A stationery suite leaning against a plaster wall: a blush letterhead, a compliment slip sealed in oxblood wax, and a stack of cards with painted copper edges.", 1600, 2000);
+const about02 = img("/media/about/02.jpg", "A full brand rollout laid out across a limestone table: foil-blocked cards, an open brochure, colour swatches, a packaging box lined with tissue, a printed tote and a laptop.", 2560, 1600);
+const about03 = img("/media/about/03.jpg", "Three print finishes side by side: a rose gold foil block, a blind deboss catching the light, and hand-painted copper edges.", 2400, 1600);
+const about04 = img("/media/about/04.jpg", "Branded packaging on travertine: an oxblood box open on blush tissue, a terracotta carrier bag, copper ribbon and a debossed hang tag.", 2400, 1600);
+const about05 = img("/media/about/05.jpg", "Large-format print in the studio: two tall display panels leaning against a plaster wall beside a rolled banner and a brushed brass sign plate.", 2400, 1600);
 
 export default function AboutPage() {
   return (
@@ -128,8 +132,11 @@ export default function AboutPage() {
 
       {/* Gallery */}
       <section className="pb-(--section-y)">
+        {/* Was "The setting", which described the old office-and-skyline
+            imagery. These three are print finishes, packaging and large-format
+            now, so the label names the craft rather than the room. */}
         <Reveal as="p" className="eyebrow text-(--color-accent-ink)">
-          The setting
+          The craft
         </Reveal>
         <div className="mt-8 grid gap-4 sm:gap-6 md:grid-cols-3">
           <Figure media={about03} sizes="(min-width: 768px) 31vw, 100vw" rounded />
