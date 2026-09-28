@@ -543,10 +543,17 @@
        layers forever and costs memory on weak devices). */
     will-change: transform, opacity;
   }
+  /* Measured: at 1s/1.1s, the gap between an element entering the viewport and
+     being fully visible ran a median of 1.13-1.17s across every page. Nothing
+     was slow to LOAD — LCP is ~124ms locally — but scrolling meant waiting over
+     a second for each section to materialise, which is what "the site feels
+     slow" actually was. Halved. Every other transition on this site is
+     0.11-0.8s; the reveal was the one outlier. The motion is unchanged, it just
+     no longer makes anyone wait for it. */
   html.js [data-reveal] {
     transition:
-      opacity 1s var(--ease-out-expo),
-      transform 1.1s var(--ease-out-expo);
+      opacity 0.5s var(--ease-out-expo),
+      transform 0.55s var(--ease-out-expo);
   }
   html.js [data-reveal].is-in {
     opacity: 1;
@@ -560,7 +567,9 @@
      observable; its single child carries the reveal clip. */
   html.js [data-reveal-media] > * {
     clip-path: inset(0 0 0 0);
-    transition: clip-path 1.2s var(--ease-out-expo);
+    /* 1.2s -> 0.65s, same reasoning as the opacity/transform pair above. A wipe
+       this size reads as deliberate at 0.65s and as waiting at 1.2s. */
+    transition: clip-path 0.65s var(--ease-out-expo);
   }
   html.js [data-reveal-media]:not(.is-in) > * {
     clip-path: inset(0 0 100% 0);

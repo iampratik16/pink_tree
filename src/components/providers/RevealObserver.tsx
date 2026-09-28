@@ -59,7 +59,13 @@ export default function RevealObserver() {
           else reveal(entry.target as HTMLElement);
         }
       },
-      { rootMargin: "0px 0px -8% 0px", threshold: 0.12 },
+      // Start the reveal just BEFORE the element scrolls into view, not after.
+      // The old "-8% bottom, 12% of the element visible" pair meant you had to
+      // scroll well past something before it even began its fade — that waiting
+      // stacked on top of the transition itself. A positive bottom margin
+      // expands the root downwards instead, so by the time a section is on
+      // screen its animation is already underway.
+      { rootMargin: "0px 0px 12% 0px", threshold: 0.01 },
     );
 
     solo.forEach((el) => io.observe(el));
