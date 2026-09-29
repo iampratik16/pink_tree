@@ -7,7 +7,7 @@ import { loop } from "@/lib/media";
 const homeHero = loop(
   "/media/hero/home",
   "/media/hero/home.jpg",
-  "Brand collateral and branded merchandise on marble, London at dusk and an English estate, an ambient brand film.",
+  "Pink Tree Media branded stationery, merchandise and an exhibition stand, cut with London at dusk and an English estate, an ambient brand film.",
   1920,
   1080,
 );
@@ -28,10 +28,14 @@ export default function Hero() {
       <Video media={homeHero} fill eager sizes="100vw" className="absolute inset-0" />
 
       {/* Darken BOTH ends and open the middle, rather than the usual
-          bottom-heavy gradient. The montage runs from a warm macro of brand
-          collateral (dark wall up top, bright marble along the bottom) into
-          aerials that invert that — bright sky up top, dark ground below. A
-          gradient weighted to either end alone under-scrims one of them.
+          bottom-heavy gradient. The montage cuts branded stills (bright, even
+          light across the whole frame) against aerials that are bright sky up
+          top and dark ground below. A gradient weighted to either end alone
+          under-scrims one of them.
+
+          The stills are graded down in scripts/build-hero-montage.mjs rather
+          than scrimmed harder here — the scrim is shared with the aerials, and
+          heavy enough to carry a white flat-lay would drown them.
 
           scripts/check-hero-scrim.mjs recomputes this composite against the
           poster and fails below AA, so changing the footage cannot quietly
