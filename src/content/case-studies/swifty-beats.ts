@@ -18,7 +18,7 @@ export default buildStudy({
   client: "Swifty Beats",
   sector: "Music & Entertainment",
   order: 4,
-  disciplines: ["Branding & Design", "Websites & Digital Marketing", "Print & Merchandise"],
+  disciplines: ["Branding & Design", "Website & Digital Marketing", "Print & Merchandise"],
   heroSrc: "/media/work/swifty/hero.jpg",
   heroAlt:
     "Twin turntables and a mixer lit from the side in a darkened studio, a dhol drum behind them.",
@@ -33,7 +33,7 @@ export default buildStudy({
   delivered: {
     "Branding & Design":
       "A visual direction consistent across the artist’s wider brand, holding from the site through to the product, so the music, the imagery and the merchandise all read as one thing.",
-    "Websites & Digital Marketing":
+    "Website & Digital Marketing":
       "Design and development of the Swifty Beats website, creating a central digital platform for his music, releases and artist profile.",
     "Print & Merchandise":
       "Branded merchandise and supporting creative assets, carrying the Swifty Beats identity beyond digital and into something people wear.",

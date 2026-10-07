@@ -21,7 +21,7 @@ export default buildStudy({
   order: 3,
   disciplines: [
     "Branding & Design",
-    "Websites & Digital Marketing",
+    "Website & Digital Marketing",
     "Social Media Marketing",
     "Print & Merchandise",
   ],
@@ -39,7 +39,7 @@ export default buildStudy({
   delivered: {
     "Branding & Design":
       "A consistent look and feel across the brand, from what customers see online and on social media through to printed and physical branded materials.",
-    "Websites & Digital Marketing":
+    "Website & Digital Marketing":
       "Website design and development, giving the business an online presence that matches the standard of the events it stages.",
     "Social Media Marketing":
       "Social media and content creation, holding the same identity across the feed that runs through everything else the business puts out.",

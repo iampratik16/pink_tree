@@ -301,58 +301,46 @@
     border: 0;
   }
 
-  /* Bespoke cursor */
-  .cursor-dot {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 9999;
-    display: grid;
-    place-items: center;
-    width: 10px;
-    height: 10px;
-    border-radius: 9999px;
-    background-color: var(--color-accent);
-    pointer-events: none;
-    opacity: 0;
-    transition:
-      width 0.4s var(--ease-out-expo),
-      height 0.4s var(--ease-out-expo),
-      background-color 0.4s var(--ease-out-expo),
-      mix-blend-mode 0s,
-      opacity 0.3s linear;
-    mix-blend-mode: multiply;
+  /* Client logo marquee ----------------------------------------------------
+     One continuous line. The track holds the logo list TWICE and slides left by
+     exactly half its width, so the moment the first copy leaves the frame the
+     second is sitting precisely where it started and the loop is invisible.
+
+     Spacing is margin-inline-end on each item, NOT `gap`. With gap, a track of
+     2N items is N*item + (2N-1)*gap wide, so half of it lands mid-gap and the
+     loop visibly jumps. Giving every item its own trailing margin makes each
+     copy exactly N*(item+margin), and -50% is then one copy to the pixel. */
+  .logo-marquee {
+    position: relative;
+    overflow: hidden;
+    /* Fade both ends so marks enter and leave rather than being guillotined at
+       the container edge. */
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent,
+      #000 7%,
+      #000 93%,
+      transparent
+    );
+    mask-image: linear-gradient(to right, transparent, #000 7%, #000 93%, transparent);
   }
-  .cursor-dot[data-state="grow"] {
-    width: 46px;
-    height: 46px;
-    background-color: color-mix(in srgb, var(--color-accent) 22%, transparent);
+
+  .logo-marquee__track {
+    display: flex;
+    width: max-content;
+    align-items: center;
+    animation: logo-marquee 55s linear infinite;
   }
-  .cursor-dot[data-state="label"] {
-    width: 86px;
-    height: 86px;
-    background-color: var(--color-accent);
-    mix-blend-mode: normal;
+
+  /* Pause on hover so a logo can actually be looked at. */
+  .logo-marquee:hover .logo-marquee__track,
+  .logo-marquee:focus-within .logo-marquee__track {
+    animation-play-state: paused;
   }
-  .cursor-dot__label {
-    font-family: var(--font-sans);
-    font-size: 0.72rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--color-paper);
-    opacity: 0;
-    transform: scale(0.6);
-    transition:
-      opacity 0.3s var(--ease-out-expo),
-      transform 0.3s var(--ease-out-expo);
-  }
-  .cursor-dot[data-state="label"] .cursor-dot__label {
-    opacity: 1;
-    transform: scale(1);
-  }
-  /* Keep the native cursor visible too (accessibility); just hide the text caret feel */
-  html.has-custom-cursor {
-    cursor: auto;
+
+  .logo-marquee__item {
+    flex: none;
+    margin-inline-end: clamp(2.75rem, 5vw, 5.5rem);
   }
 
   /* Page-transition curtain */
@@ -1110,5 +1098,42 @@
   }
   .work-panel:hover img {
     transform: none;
+  }
+}
+
+/* =============================================================================
+   Client logo marquee — keyframes and the reduced-motion stop.
+   ========================================================================== */
+
+@keyframes logo-marquee {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+/* The global reduced-motion rule above collapses every animation to 0.001ms
+   with one iteration — which does NOT stop this marquee, it fast-forwards it to
+   its end state, leaving the track parked at -50% and the first copy of the
+   logos off-screen. It has to be cancelled by name, unlayered and !important,
+   to outrank that rule.
+
+   With the animation gone the duplicate copy is dead weight behind the mask, so
+   it is removed and the strip becomes an ordinary horizontally scrollable row —
+   every logo still reachable, just under the reader's control. */
+@media (prefers-reduced-motion: reduce) {
+  .logo-marquee {
+    overflow-x: auto;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+  .logo-marquee__track {
+    animation: none !important;
+    transform: none !important;
+  }
+  .logo-marquee__item[aria-hidden="true"] {
+    display: none;
   }
 }

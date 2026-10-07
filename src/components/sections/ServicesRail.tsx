@@ -28,7 +28,7 @@ import { CAPABILITIES } from "@/lib/site";
 const PANEL_ART: Record<string, string> = {
   "Branding & Design": "design-branding",
   "Print & Merchandise": "print-merchandise",
-  "Websites & Digital Marketing": "websites-digital",
+  "Website & Digital Marketing": "websites-digital",
   "Social Media Marketing": "social-media",
 };
 
@@ -38,7 +38,7 @@ const PANEL_ART: Record<string, string> = {
 const TAG: Record<string, string> = {
   "Branding & Design": "Strategy, identity & design",
   "Print & Merchandise": "Stock, finish & production",
-  "Websites & Digital Marketing": "Websites, SEO & paid campaigns",
+  "Website & Digital Marketing": "Websites, SEO & paid campaigns",
   "Social Media Marketing": "Strategy, content & reporting",
 };
 

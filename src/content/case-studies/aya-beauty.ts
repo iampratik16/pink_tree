@@ -5,7 +5,7 @@ export default buildStudy({
   client: "Aya Beauty",
   sector: "Beauty & Lifestyle",
   order: 2,
-  disciplines: ["Branding & Design", "Websites & Digital Marketing", "Social Media Marketing"],
+  disciplines: ["Branding & Design", "Website & Digital Marketing", "Social Media Marketing"],
   heroSrc: "/media/work/aya/hero.jpg",
   heroAlt: "Aya Beauty, a frosted glass vessel and brushed metal cap catching soft light.",
   heroVideo: true,
@@ -17,7 +17,7 @@ export default buildStudy({
   delivered: {
     "Branding & Design":
       "A refined identity with an editorial, tactile sensibility, a wordmark, palette and art direction that feel premium without feeling cold, and that flex across packaging, print and digital.",
-    "Websites & Digital Marketing":
+    "Website & Digital Marketing":
       "A fast, elegant storefront designed around the product photography, with a frictionless browse-to-checkout flow and performance tuned for mobile-first shoppers.",
     "Social Media Marketing":
       "A cohesive, art-directed feed that treats every post as part of one ongoing lookbook, building recognition and trust between launches.",

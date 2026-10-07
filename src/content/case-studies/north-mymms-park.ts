@@ -5,7 +5,7 @@ export default buildStudy({
   client: "North Mymms Park",
   sector: "Luxury Events & Hospitality",
   order: 5,
-  disciplines: ["Branding & Design", "Websites & Digital Marketing", "Print & Merchandise"],
+  disciplines: ["Branding & Design", "Website & Digital Marketing", "Print & Merchandise"],
   heroSrc: "/media/work/north-mymms/hero.jpg",
   heroAlt: "North Mymms Park, the period estate facade in low golden light.",
   heroVideo: true,
@@ -17,7 +17,7 @@ export default buildStudy({
   delivered: {
     "Branding & Design":
       "A restrained, heritage-aware identity: a refined wordmark, an elegant palette and typography that signals permanence rather than trend, built to sit alongside centuries of architecture.",
-    "Websites & Digital Marketing":
+    "Website & Digital Marketing":
       "An image-led website that gives the estate room to breathe, generous photography, a calm enquiry journey and fast, polished performance across devices.",
     "Print & Merchandise":
       "Brochures and enquiry collateral on weighted stock, so the estate’s first physical impression carries the same quiet authority as the grounds.",

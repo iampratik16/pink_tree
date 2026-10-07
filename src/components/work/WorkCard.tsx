@@ -4,7 +4,6 @@ import BendImage from "@/components/media/BendImage";
 import Img from "@/components/media/Img";
 import Video from "@/components/media/Video";
 import HoverVideo from "@/components/media/HoverVideo";
-import CursorViewLabel from "@/components/work/CursorViewLabel";
 import { ArrowUpRight } from "@/components/ui/icons";
 import type { CaseStudy } from "@/content/schema";
 
@@ -68,9 +67,6 @@ export default function WorkCard({
           className="size-full"
         />
       )}
-
-      {/* Hover affordance — a 'View' disc that follows the cursor (Collins-style). */}
-      <CursorViewLabel />
 
       {study.placeholder && (
         <span className="absolute left-4 top-4 z-[3] rounded-full bg-(--color-ink)/70 px-3 py-1 text-xs tracking-wide text-(--color-paper-on-dark) backdrop-blur-sm">

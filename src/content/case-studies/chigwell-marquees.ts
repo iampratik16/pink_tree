@@ -7,7 +7,7 @@ import { img, loop } from "@/lib/media";
  *
  * Three things went with that draft:
  *
- *  - "Websites & Digital Marketing" is no longer claimed. The services the
+ *  - "Website & Digital Marketing" is no longer claimed. The services the
  *    client listed for this study are social media, branding, print, signage
  *    and large format; web is not among them.
  *  - `results` is empty. The draft carried "< 1.5s mobile load" and two

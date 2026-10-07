@@ -20,7 +20,7 @@ export const metadata: Metadata = {
  * two pages reading as the same page twice: the art here is abstract still-life,
  * never client work, and the page is read rather than browsed.
  *
- * `groups` rather than a flat list because Websites & Digital Marketing is two
+ * `groups` rather than a flat list because Website & Digital Marketing is two
  * offers under one heading, and they are worth naming separately. Every group
  * declares `label` — null where it has no sub-heading — because with `as const`
  * an omitted key leaves the property off the union entirely and `group.label`
@@ -103,7 +103,7 @@ const SERVICES = [
   {
     slug: "websites-digital",
     art: "websites",
-    name: "Websites & Digital Marketing",
+    name: "Website & Digital Marketing",
     lead: "Your digital presence should do more than look good.",
     body: "We create websites and digital campaigns around clear business objectives, whether that’s generating enquiries, increasing bookings, selling products or strengthening your online presence.",
     groups: [

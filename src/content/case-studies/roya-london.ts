@@ -19,7 +19,7 @@ export default buildStudy({
   client: "Roya London",
   sector: "Fashion & Lifestyle",
   order: 1,
-  disciplines: ["Branding & Design", "Websites & Digital Marketing", "Print & Merchandise"],
+  disciplines: ["Branding & Design", "Website & Digital Marketing", "Print & Merchandise"],
   heroSrc: "/media/work/roya/hero.jpg",
   heroAlt:
     "Roya London branded postage bags and swing tags, the wordmark printed in deep green on white.",
@@ -34,7 +34,7 @@ export default buildStudy({
   delivered: {
     "Branding & Design":
       "A clean, considered brand presence carried consistently across every customer touchpoint, digital and physical, designed to complement the products rather than compete with them.",
-    "Websites & Digital Marketing":
+    "Website & Digital Marketing":
       "Design and development of Roya London’s Shopify e-commerce website, creating a clean, easy-to-navigate online store that puts the products at the forefront.",
     "Print & Merchandise":
       "The Roya London branding applied across its physical customer touchpoints, including branded postage bags, product tags and product labels, creating consistency from the online shopping experience through to the finished product and packaging.",

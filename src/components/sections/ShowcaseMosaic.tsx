@@ -13,10 +13,10 @@ import { img } from "@/lib/media";
  */
 const TILES = [
   img("/media/showcase/01.jpg", "A laptop on a limestone ledge showing a venue website.", 1400, 2100),
-  img("/media/showcase/02.jpg", "Foil-embossed oxblood business cards with rose gold edges beside a wax seal.", 1600, 1200),
-  img("/media/showcase/03.jpg", "A brushed brass signage plate on a plaster wall, its emblem standing proud and casting a crisp shadow, with a terracotta wayfinding disc below.", 1600, 1200),
+  img("/media/showcase/02.jpg", "An open brand guidelines book showing a rose-gold and maroon type specimen across both pages, embossed cards and a brass rule beside it.", 1600, 1200),
+  img("/media/showcase/03.jpg", "Branded merchandise in brand tones on warm plaster: an insulated bottle, a ceramic mug, a folded tee and a bound notebook with a pen.", 1600, 1200),
   img("/media/showcase/04.jpg", "A hand holding a phone showing a beauty brand image feed.", 1600, 1200),
-  img("/media/showcase/05.jpg", "A branded box opened on pale marble, printed tissue folded back around a glass product bottle, a debossed card beside it.", 1600, 1200),
+  img("/media/showcase/05.jpg", "A large printed brochure lying open on marble showing an editorial spread of architecture and table settings, a rose-gold foiled cover copy beneath.", 1600, 1200),
 ];
 
 export default function ShowcaseMosaic({ className = "" }: { className?: string }) {

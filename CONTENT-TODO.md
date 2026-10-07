@@ -36,7 +36,7 @@ re-confirming; edit them at source if the offer changes.
 Still a DRAFT written here, and needing sign-off before launch:
 
 - [ ] The one-line body under each service heading, apart from Social Media
-      Marketing and Websites & Digital Marketing, which are client-supplied.
+      Marketing and Website & Digital Marketing, which are client-supplied.
 - [ ] "Print has been part of Pink Tree Media from the beginning" — supplied as
       a point to make, but the wording is ours.
 

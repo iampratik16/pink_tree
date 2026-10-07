@@ -15,7 +15,7 @@ export const HELP_OPTIONS = [
   "Branding & Design",
   "Print & Merchandise",
   "Social Media Marketing",
-  "Websites & Digital Marketing",
+  "Website & Digital Marketing",
   "Not sure, I’d like some advice",
 ] as const;
 

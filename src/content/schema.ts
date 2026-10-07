@@ -5,7 +5,7 @@ export const DISCIPLINES = [
   "Branding & Design",
   "Print & Merchandise",
   "Social Media Marketing",
-  "Websites & Digital Marketing",
+  "Website & Digital Marketing",
 ] as const;
 
 export const imageMediaSchema = z.object({

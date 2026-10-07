@@ -52,7 +52,7 @@ export const CAPABILITIES = [
   "Branding & Design",
   "Print & Merchandise",
   "Social Media Marketing",
-  "Websites & Digital Marketing",
+  "Website & Digital Marketing",
 ] as const;
 
 export type Capability = (typeof CAPABILITIES)[number];

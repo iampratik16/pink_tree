@@ -3,7 +3,6 @@ import { archivo, hanken, fraunces, boska } from "@/lib/fonts";
 import { SITE } from "@/lib/site";
 import SmoothScroll from "@/components/providers/SmoothScroll";
 import RevealObserver from "@/components/providers/RevealObserver";
-import Cursor from "@/components/providers/Cursor";
 import PageTransition from "@/components/providers/PageTransition";
 import SiteBackground from "@/components/layout/SiteBackground";
 import Header from "@/components/layout/Header";
@@ -71,7 +70,6 @@ export default function RootLayout({
         <SiteBackground />
         <SmoothScroll />
         <RevealObserver />
-        <Cursor />
         <PageTransition>
           <a href="#main" className="skip-link">
             Skip to content
