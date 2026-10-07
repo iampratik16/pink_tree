@@ -6,8 +6,8 @@ const BLUR: Record<string, string> = blurMap;
 // Bump to bust the Vercel/Next image + CDN cache after regenerating assets in
 // place (same path, new content) — otherwise mobile can keep serving stale
 // optimized variants. Appended as ?v= to every media URL.
-const CACHE_V = "30";
-const v = (src: string) => `${src}?v=${CACHE_V}`;
+const CACHE_V = "31";
+export const v = (src: string) => `${src}?v=${CACHE_V}`;
 
 /** Returns the precomputed blurDataURL for a local image src, if any. */
 export function getBlur(src: string): string | undefined {
