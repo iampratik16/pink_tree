@@ -8,7 +8,14 @@ export const SITE = {
   name: "Pink Tree Media",
   shortName: "Pink Tree",
   // Used for absolute URLs (OG images, sitemap, structured data).
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.pinktreemedia.com",
+  //
+  // Apex, NOT www. The live WordPress site serves on the apex and redirects www
+  // to it, so that is the hostname Google has indexed and that inbound links
+  // point at. Declaring www here would have every canonical, sitemap entry and
+  // OG URL disagree with the indexed form on day one of the switchover — the
+  // migration is already asking search engines to re-learn the paths, and
+  // changing the hostname at the same time compounds it for no gain.
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://pinktreemedia.com",
   description:
     "Pink Tree Media provides complete marketing solutions for ambitious brands, a UK luxury creative consultancy spanning design, print, digital and social.",
   tagline: "Complete marketing for ambitious brands.",
