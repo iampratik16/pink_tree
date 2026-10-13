@@ -4,83 +4,43 @@ import Reveal from "@/components/motion/Reveal";
 /**
  * Client logo strip — the trust bar, directly above the footer.
  *
- * Every logo here is the artwork as supplied; nothing is recoloured. That has a
- * consequence the layout has to carry, because the five files do not agree on
- * what background they need:
+ * Every logo ships with real transparency. There is deliberately NO
+ * `mix-blend-multiply` here, and it must not be reintroduced: once this strip
+ * became a marquee it stopped working. `.logo-marquee__track` is animated with
+ * `transform` and `.logo-marquee` carries a `mask-image`, and each of those
+ * creates a stacking context — so the blend group is the track, whose backdrop
+ * is transparent. Multiplying against nothing returns the pixel unchanged, and
+ * every white box stayed white while appearing to be "handled".
  *
- *   Aya, Central,     dark and gold marks baked onto opaque cream/white boxes.
- *   Co-op, DRMS       `mix-blend-multiply` dissolves those grounds into the
- *                     light band, so the mark survives and the box does not.
- *   North Mymms       dark on transparency; sits on the light band untouched.
- *   Chigwell, Swifty, WHITE artwork (Swifty measures 254,254,254; Chigwell is
- *   Novikov           white text with a gold crown; Novikov is white type over
- *                     a red rule). On a pale ground these are invisible, so each
- *                     sits on an ink tile — the ground the artwork was drawn
- *                     for. No blend on those: multiply would turn the white
- *                     straight back into black.
- *   KFC               a self-contained mark: transparent AROUND the bucket, but
- *                     opaque white INSIDE it, outlined in black. `plain` — no
- *                     blend, no tile. Multiply would eat the bucket's white face
- *                     and drag the red down toward maroon, so the one logo here
- *                     that already carries its own ground must be left alone.
+ * So the grounds are fixed in the FILES, not in CSS:
  *
- * Heights are per logo, not shared. These run from roughly 1:1 (Aya) to 4:1
- * (Chigwell), so a single height would make the wide marks enormous beside the
+ *   Chigwell, DRMS    supplied flattened on white; the white is keyed out by
+ *                     recovering alpha from luminance, which keeps the
+ *                     antialiased edges a threshold cut would have shredded.
+ *   North Mymms       already transparent as supplied.
+ *   Swifty            supplied as WHITE artwork for dark grounds. The brief
+ *                     asked for black type with no tile, so the ink is inverted
+ *                     and the alpha left alone — the one recoloured mark here.
+ *   KFC, Co-op        self-contained marks that carry their OWN ground: KFC is
+ *                     transparent around the bucket but opaque white inside it,
+ *                     Co-op is white type reversed out of a cyan tile. Both are
+ *                     used verbatim. Co-op in particular must never be trimmed —
+ *                     its cyan IS the logo, and an auto-trim ate it once already.
+ *   Novikov           WHITE type over a red rule, drawn for a dark ground. On a
+ *                     pale band it is invisible, so it alone sits on an ink tile.
+ *
+ * Heights are per logo, not shared. These run from roughly 1:1 (KFC) to 3.8:1
+ * (Novikov), so a single height would make the wide marks enormous beside the
  * square ones. The values below are tuned for equal optical weight, which is
  * what makes the spacing read as even.
  */
 const CLIENTS = [
   {
-    name: "Aya Beauty",
-    src: "/media/clients/aya-beauty.png",
-    width: 225,
-    height: 225,
-    size: "h-14 sm:h-20",
-  },
-  {
-    name: "Central Restaurant & Lounge",
-    src: "/media/clients/central.png",
-    width: 589,
-    height: 521,
-    size: "h-14 sm:h-20",
-  },
-  {
-    name: "North Mymms Park",
-    src: "/media/clients/north-mymms.png",
-    width: 587,
-    height: 239,
-    size: "h-12 sm:h-16",
-  },
-  {
     name: "The Chigwell Marquees",
     src: "/media/clients/chigwell.png",
-    width: 640,
-    height: 159,
-    size: "h-8 sm:h-11",
-    onDark: true,
-  },
-  {
-    name: "Swifty Beats",
-    src: "/media/clients/swifty-beats.png",
-    width: 384,
-    height: 133,
-    size: "h-9 sm:h-12",
-    onDark: true,
-  },
-  {
-    name: "KFC",
-    src: "/media/clients/kfc.png",
-    width: 900,
-    height: 902,
+    width: 303,
+    height: 189,
     size: "h-12 sm:h-16",
-    plain: true,
-  },
-  {
-    name: "Co-op",
-    src: "/media/clients/coop.png",
-    width: 512,
-    height: 512,
-    size: "h-11 sm:h-14",
   },
   {
     name: "Novikov Restaurant & Bar",
@@ -91,11 +51,39 @@ const CLIENTS = [
     onDark: true,
   },
   {
+    name: "KFC",
+    src: "/media/clients/kfc.png",
+    width: 900,
+    height: 902,
+    size: "h-12 sm:h-16",
+  },
+  {
+    name: "Co-op",
+    src: "/media/clients/coop.png",
+    width: 269,
+    height: 172,
+    size: "h-11 sm:h-14",
+  },
+  {
+    name: "North Mymms Park",
+    src: "/media/clients/north-mymms.png",
+    width: 587,
+    height: 239,
+    size: "h-12 sm:h-16",
+  },
+  {
     name: "DRMS · Dr. Medispa",
     src: "/media/clients/drms.png",
     width: 900,
     height: 411,
     size: "h-9 sm:h-12",
+  },
+  {
+    name: "Swifty Beats",
+    src: "/media/clients/swifty-beats.png",
+    width: 250,
+    height: 84,
+    size: "h-8 sm:h-11",
   },
 ] as const;
 
@@ -136,9 +124,7 @@ function Logo({
       width={client.width}
       height={client.height}
       sizes="240px"
-      className={`${client.size} w-auto${
-        "plain" in client && client.plain ? "" : " mix-blend-multiply"
-      }`}
+      className={`${client.size} w-auto`}
     />
   );
 }

@@ -1,5 +1,5 @@
 import type { CaseStudy } from "@/content/schema";
-import { img, loop } from "@/lib/media";
+import { img } from "@/lib/media";
 
 /**
  * The Chigwell Marquees. Client-supplied copy, used close to verbatim,
@@ -26,12 +26,16 @@ const chigwellMarquees: CaseStudy = {
   order: 2,
   placeholder: false,
   disciplines: ["Branding & Design", "Print & Merchandise", "Social Media Marketing"],
-  heroMedia: loop(
-    "/media/work/chigwell/hero",
+  // A client photograph of the real venue, not the generated candlelit loop
+  // that stood here. Dimensions are the file's own 2048x1365 rather than the
+  // 2560x1600 the loop declared: the hero renders with `fill`, so these only
+  // set the intrinsic aspect, and claiming a size the file does not have would
+  // have Next generate srcset candidates wider than the source.
+  heroMedia: img(
     "/media/work/chigwell/hero.jpg",
-    "The Chigwell Marquees, a candlelit marquee interior dressed for an event.",
-    2560,
-    1600,
+    "A marquee at The Chigwell Marquees dressed for a reception: round tables in ivory linen with chiavari chairs, tall red and blush floral centrepieces, and draped walls under a pitched canopy.",
+    2048,
+    1365,
   ),
   oneLineOutcome:
     "One identity, consistent from the brochure and the signage through to the feed.",
