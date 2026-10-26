@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useRef, useState, type FormEvent } from "react";
 import {
   contactSchema,
   CONTACT_FIELDS,
@@ -30,6 +30,15 @@ export default function ContactForm() {
   const [errors, setErrors] = useState<Errors>({});
   const [status, setStatus] = useState<Status>("idle");
   const [serverError, setServerError] = useState<string | null>(null);
+
+  // Stamped once, when the form first renders. The API drops anything
+  // submitted within three seconds of this, and anything arriving without it —
+  // a script POSTing straight at the endpoint never renders the form.
+  //
+  // A ref, not state: it must never change after mount and must never cause a
+  // re-render. useState's initialiser would also run once, but a later setState
+  // could clobber it; a ref cannot be rewritten by accident.
+  const startedAt = useRef(Date.now());
 
   function setField<K extends keyof ContactInput>(key: K, value: string) {
     setValues((v) => ({ ...v, [key]: value }));
@@ -68,7 +77,7 @@ export default function ContactForm() {
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(result.data),
+        body: JSON.stringify({ ...result.data, startedAt: startedAt.current }),
       });
       if (!res.ok) throw new Error("Request failed");
       setStatus("success");

@@ -11,6 +11,13 @@ export const runtime = "nodejs";
 // observed handshake and still well inside Vercel's ceiling.
 export const maxDuration = 30;
 
+/**
+ * Shortest plausible time between the form appearing and a human submitting it.
+ * Five fields including a select and a free-text enquiry; three seconds is far
+ * below any real completion and far above an instant scripted POST.
+ */
+const MIN_FILL_MS = 3000;
+
 // Comma-separated, so one env var fans out to every inbox that should see an
 // enquiry without a redeploy when the list changes.
 const TO = (process.env.CONTACT_TO_EMAIL ?? CONTACT.email)
@@ -57,6 +64,28 @@ export async function POST(request: Request) {
 
   // Honeypot tripped → pretend success, send nothing.
   if (data.website) {
+    return NextResponse.json({ ok: true });
+  }
+
+  // Timing gate. The form stamps Date.now() when it mounts; filling five fields
+  // takes a human well over twenty seconds, while a script posts immediately.
+  // No stamp at all means the form was never rendered — a direct POST at the
+  // endpoint.
+  //
+  // Silent success, like the honeypot, and for the same reason: an explicit
+  // "too fast" tells the operator precisely which knob to turn. A human cannot
+  // trip this, so there is no real enquiry to lose.
+  //
+  // The stamp is client-supplied and therefore forgeable. That is a deliberate
+  // ceiling, not an oversight — it stops the bots actually hitting this form
+  // without putting a challenge in front of real visitors. If they start
+  // backdating the stamp, the answer is Cloudflare Turnstile, not a cleverer
+  // timestamp.
+  const elapsed = data.startedAt ? Date.now() - data.startedAt : -1;
+  if (elapsed < MIN_FILL_MS) {
+    console.warn(
+      `[contact] dropped: submitted ${elapsed < 0 ? "with no render stamp" : elapsed + "ms after render"} (floor ${MIN_FILL_MS}ms)`,
+    );
     return NextResponse.json({ ok: true });
   }
 
