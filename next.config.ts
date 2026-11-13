@@ -11,10 +11,29 @@ const nextConfig: NextConfig = {
   distDir: process.env.NEXT_DIST_DIR ?? ".next",
 
   images: {
-    // AVIF only (client decision — no WebP). Next serves AVIF to any browser
-    // that accepts it (all current Chrome / Firefox / Edge / Safari 16+); any
-    // browser without AVIF support automatically falls back to the original
-    // JPEG/PNG. Nothing is ever served a format it didn't ask for.
+    // Vercel's image optimizer is OFF, and this is not a preference — the
+    // Hobby plan's transformation quota is exhausted and the optimizer returns
+    // 402 Payment Required for any variant it has not already cached. Three
+    // case-study heroes were rendering as broken images in production.
+    //
+    // What burned the quota: `deviceSizes` below asked for 9 widths per image
+    // across ~60 source files, and every bump of CACHE_V in src/lib/media.ts
+    // changes the `?v=` on every URL — which Vercel treats as a brand new
+    // source image and re-transforms from scratch. CACHE_V went 19 -> 34 during
+    // this build, so the full set was re-transformed fifteen times over.
+    //
+    // Unoptimized serves the files in public/ as they are: no transformations,
+    // no quota, nothing to exhaust. The cost is no AVIF and no per-breakpoint
+    // resizing, so a phone downloads the same JPEG a desktop does. The source
+    // files are already sized for delivery (largest 679KB, most under 300KB),
+    // so this is a real but bounded regression — correctness over bytes while
+    // the quota is gone.
+    //
+    // To turn optimization back on: upgrade the Vercel plan or wait for the
+    // monthly reset, then drop `unoptimized`, and cut deviceSizes to about
+    // three widths so the quota lasts. Bump CACHE_V sparingly — each bump costs
+    // a complete re-transformation of every image on the site.
+    unoptimized: true,
     formats: ["image/avif"],
     deviceSizes: [360, 480, 640, 768, 1024, 1280, 1536, 1920, 2560],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
